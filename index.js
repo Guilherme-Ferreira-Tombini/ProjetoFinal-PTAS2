@@ -3,6 +3,17 @@ var app = express();
 var {autor} = require("./models");
 var {livro} = require("./models");
 
+var app = express();
+var cors= require('cors');
+app.use(cors())
+
+app.use ((req,res,next)=>{
+  console.log("Servidor")
+  res.header("Access-Control-Allow-Origin", "*")
+  app.use(cors())
+  next()
+})
+
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
